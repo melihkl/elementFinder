@@ -35,7 +35,7 @@ if config['login_required']:
 
     username.send_keys(config['username'])
     password.send_keys(config['password'])
-    driver.find_element(By.ID, config['loginButton']).click()
+    driver.find_element(By.ID, config['login_button_element']).click()
 
     time.sleep(1)
 
