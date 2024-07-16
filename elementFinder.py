@@ -28,13 +28,14 @@ elif config['browser_type'] == "Chrome":
 if config['login_required']:
     driver.get(config["login_url"])
 
-    time.sleep(2)
+    time.sleep(1)
 
     username = driver.find_element(By.ID, config['username_element'])
-    password = driver.find_element(By.XPATH, config['password_element'])
+    password = driver.find_element(By.ID, config['password_element'])
 
     username.send_keys(config['username'])
     password.send_keys(config['password'])
+    
     driver.find_element(By.ID, config['login_button_element']).click()
 
     time.sleep(1)
