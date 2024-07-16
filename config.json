@@ -1,0 +1,11 @@
+{
+  "browser_type": "Edge",
+  "login_required": true,
+  "login_url": "",
+  "username_element": "",
+  "password_element": "",
+  "login_button_element": "",
+  "username": "",
+  "password": "",
+  "target_url": ""
+}
