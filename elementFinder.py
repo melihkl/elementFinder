@@ -27,17 +27,12 @@ elif config['browser_type'] == "Chrome":
 
 if config['login_required']:
     driver.get(config["login_url"])
-
     time.sleep(1)
-
     username = driver.find_element(By.ID, config['username_element'])
     password = driver.find_element(By.ID, config['password_element'])
-
     username.send_keys(config['username'])
     password.send_keys(config['password'])
-    
     driver.find_element(By.ID, config['login_button_element']).click()
-
     time.sleep(1)
 
 
@@ -49,8 +44,11 @@ window.getXPath = function(element) {
     if (element.id !== '') {
         return 'id("' + element.id + '")';
     }
+    if (element.tagName === 'HTML') {
+        return '/' + element.tagName.toLowerCase();
+    }
     if (element === document.body) {
-        return element.tagName;
+        return '/html/body';
     }
 
     var ix = 0;
@@ -58,7 +56,7 @@ window.getXPath = function(element) {
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
         if (sibling === element) {
-            return getXPath(element.parentNode) + '/' + element.tagName + '[' + (ix + 1) + ']';
+            return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
         }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName) {
             ix++;
